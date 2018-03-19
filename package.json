@@ -1,0 +1,19 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "My personal portfolio site",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gorazd-ratulovsky/portfolio.git"
+  },
+  "author": "Gorazd Ratulovsky",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gorazd-ratulovsky/portfolio/issues"
+  },
+  "homepage": "https://github.com/gorazd-ratulovsky/portfolio#readme"
+}
