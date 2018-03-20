@@ -1,0 +1,1 @@
+{"version":3,"sources":["base/_reset.scss","app.scss"],"names":[],"mappings":"AAAA,CAAC,AAAC,CACD,MAAM,CAAE,CAAC,CCCV,ADAC,ICAD,CACC,SAAA,CAAA,IAAA,CACA","file":"../app.css","sourcesContent":["p { \n\tmargin: 0;\n}","@import 'base/reset';\n\nbody {\n\tfont-size: 10px;\n}"]}
