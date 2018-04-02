@@ -103,73 +103,44 @@ body.is-blue {
 
 .l-section {
 	position: absolute;
-	top: 0;
+	top: 100%;
 	left: 0;
 	right: 0;
-	bottom: 0;
 	width: 100%;
-	background-color: transparent;
-	// visibility: hidden;
-	// opacity: 1;
+    height: 100vh;
     background-color: $color--light;
-    //transition: transform 0.3s ease;
-    transform: translateY(100%);
+    transform: translateY(0%);
+    
     transition: transform 0.3s ease;
 
-    .wrap {
-        opacity: 0;
-        transform: translateY(15%);
-        transition: opacity 0.3s ease, transform 0.3s ease;
+    &.is-visible {
+        z-index:10;
+        transform: translateY(-100%);
     }
-
+ 
+    &.is-scrolling-down {
+        transform: translateY(-200%);
+    }
 /*
     &.is-scrolling-down--next {
-        transform: translateY(100%);
+        //transform: translateY(-100%);
         animation-name: mymove;
-                animation-duration: 0.4s; 
-                animation-delay: 0s;  
-                animation-timing-function: ease-in-out; 
+        animation-duration: 0.4s; 
+        animation-delay: 0s;  
+        animation-timing-function: ease-in-out; 
     }
     */
-
-	&.is-active {
-		// visibility: visible;
-		// opacity: 1;
-        z-index:10;
-        transform: translateY(0%);
-
-        .wrap {
-            transform: translateY(0);
-            opacity: 1;
-        }
-   
-        //transform: translateY(0%);
-        //transition: opacity 0.3s ease, visibility 0.3s ease;
-	}
-
-    &.is-scrolling-down, &.is-scrolling-down, &.is-scrolling-up {
-        z-index: 10;
-    }
 
     &--home {
         padding-bottom: $section--bottom-offset;
         background-color: $color--blue;
-        .big-title {
-            transform: translateY(0%);
-            transition: transform 0.3s ease;
-        }
-
-        &.is-scrolling-down {
-            .big-title {
-                transform: translateY(-40%);
-            }
-        }
-
     }
 
     &--about-me {
         padding-bottom: $section--bottom-offset - 5px;
-        //background-color: $color--light;
+            &.is-active {
+                transform: translateY(0%);
+            }
 
         .perex {
             margin-bottom: 60px;

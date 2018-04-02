@@ -67,8 +67,8 @@ class ScrollSlider {
 			let currentEl = this.sliderElements[currentId];
 			let nextEl = this.sliderElements[nextId];
 
-			currentEl.item.classList.add('is-scrolling-down');
 			currentEl.item.classList.remove('is-active');
+			currentEl.item.classList.add('is-scrolling-down');
 			nextEl.item.classList.add('is-scrolling-down--next');
 			nextEl.item.classList.add('is-active');
 			currentEl.visible = false;
