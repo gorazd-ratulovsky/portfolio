@@ -33,10 +33,10 @@ export const styles = () => {
 			browsers: ['last 4 versions', 'ie >= 9']
 		}))
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-		.pipe(sourcemaps.write(config.paths.styles.maps))
 		.pipe(rename({
 			basename: "bundle"
 		}))
+		.pipe(sourcemaps.write(config.paths.styles.maps))
 		.pipe(gulp.dest(config.paths.styles.dest))
 		.pipe(browserSync.stream());
 };
@@ -53,10 +53,10 @@ export const templates = () => {
 
 export const scripts = () => {
 	return gulp.src(config.paths.scripts.src)
-		.pipe(sourcemaps.init())
+		//.pipe(sourcemaps.init())
 		.pipe(babel())
 		.pipe(uglify())
-		.pipe(sourcemaps.write(config.paths.scripts.maps))
+		//.pipe(sourcemaps.write(config.paths.scripts.maps))
 		.pipe(concat('app.js'))
 		.pipe(gulp.dest(config.paths.scripts.dest))
 		.pipe(browserSync.stream());

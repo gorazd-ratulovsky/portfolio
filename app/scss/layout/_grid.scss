@@ -1,0 +1,65 @@
+$wrap--offset: 0 ($offset--base * 2);
+.wrap {
+	margin: 0 auto;
+	max-width: 100%;
+	padding: $wrap--offset;
+
+	&--full {
+		height: 100%;
+	}
+}
+
+.row {
+	display: flex;
+	margin: 0 -15px;
+
+	&--full {
+		height: 100%;
+	}
+}
+
+[class^="g-"] {
+	padding: 0 15px;
+
+	&.flex-end {
+		align-self: flex-end;
+	}
+}
+
+.g {
+	&-xl-2 {
+		width: 16.665%;
+	}
+
+	&-xl-3 {
+		width: 25%;
+	}
+
+	&-xl-4 {
+		width: 33.33%;
+	}
+
+	&-xl-5 {
+		width: 41.66%;
+	}
+
+	&-xl-6 {
+		width: 50%;
+	}
+
+	&-xl-8 {
+		width: 66.66%;
+	}
+
+	&-xl-9 {
+		width: 75%;
+	}
+
+	&-xl-10 {
+		width: 83.325%;
+	}
+
+	&-xl-12 {
+		width: 100%;
+	}
+}

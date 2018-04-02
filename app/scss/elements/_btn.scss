@@ -1,0 +1,22 @@
+$btn-blue--color: white;
+$btn--color: $color--blue;
+$btn-grey--color: $color--grey-darker;
+
+body.is-blue {
+	.e-btn {
+		color: $btn-blue--color;
+	}
+}
+
+.e-btn {
+	display: inline-block;
+	position: relative;
+	font-size: 2.6rem;
+	text-decoration: none;
+	color: $btn--color;
+	margin-bottom: 15px;
+
+	&--grey {
+		color: $btn-grey--color;
+	}
+}

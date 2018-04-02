@@ -1,5 +1,24 @@
 html
 	head
 		title
-	body
-		p Hello World
+		link(rel="stylesheet" href="https://webfonts.fontstand.com/WF-003967-50d7ef660a15a6a02aad988ada1b94b9.css" type="text/css")
+		link(rel="stylesheet" type="text/css" href="styles/bundle.css")
+	body.is-blue
+		include sections/header-verticalNav.pug
+
+		//- div.c-canvas.js-canvas
+		//- 	p.js-test test
+		div.c-scroll-wrap.js-slider
+			include sections/section-home.pug
+
+			include sections/section-aboutMe.pug
+
+			include sections/section-project.pug
+
+			include sections/section-contactMe.pug
+
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/4.7.1/pixi.min.js")
+		script(src="scripts/app.js")
+
+
+//- pri scrolle sa bude menit trieda na body ktora bude menit pozadie

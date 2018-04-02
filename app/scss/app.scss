@@ -1,5 +1,21 @@
-@import 'base/reset';
+/* VARIABLES FOLDER */
+@import 'variables/variables';
 
-body {
-	font-size: 10px;
-}
+/* MIXINS FOLDER */
+@import 'mixins/mixins';
+
+/* BASE FOLDER */
+@import 'base/reset';
+@import 'base/base';
+@import 'base/typography';
+
+/* LAYOUT FOLDER */
+@import 'layout/grid';
+@import 'layout/sections';
+
+/* ELEMENTS FOLDER */
+@import 'elements/btn';
+
+/* COMPONENTS FOLDER */
+
+/* VENDORS FOLDER */
