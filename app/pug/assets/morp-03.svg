@@ -1,5 +1,5 @@
-<svg id="morph3" class="morphingShape" xmlns="http://www.w3.org/2000/svg" width="13px" viewBox="0 0 11.54 12.69"><title>Untitled-1</title>
-<path class="circle" d="M.5,5A4.5,4.5,0,1,1,5,9.5,4.5,4.5,0,0,1,.5,5Z" style="fill:none;stroke:#a8adbf;stroke-miterlimit:10"/>
-<path opacity="0" class="triangle" d="M1,6.35,11,.85v11Z" style="fill:none;stroke:#a8adbf;stroke-miterlimit:10"/>
-<path opacity="0" class="square" d="M.5.5h9v9H.5Z" style="fill:none;stroke:#a8adbf;stroke-miterlimit:10"/>
+<svg id="morph3" class="morphingShape" xmlns="http://www.w3.org/2000/svg" width="14px" viewBox="0 0 14 14"><title>Untitled-1</title>
+<path class="circle" d="M2.5,7A4.5,4.5,0,1,1,7,11.5,4.5,4.5,0,0,1,2.5,7Z" style="fill:none;stroke:#a8adbf;stroke-miterlimit:10"/>
+<path opacity="0" class="triangle" d="M2.27,7l10-5.5v11Z" style="fill:none;stroke:#a8adbf;stroke-miterlimit:10"/>
+<path opacity="0" class="square" d="M2.5,2.5h9v9h-9Z" style="fill:none;stroke:#a8adbf;stroke-miterlimit:10"/>
 </svg>

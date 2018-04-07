@@ -1,14 +1,81 @@
+body.is-home {
+	.c-vertical-nav {
+		display: block;
+	}
+
+	.c-scroll-down-text {
+		display: none;
+	}
+}
+
+body.is-blue {
+	.c-vertical-nav {
+		.morphingShape {
+			path {
+				stroke: $color--blue-lighter !important;
+			}
+		}
+
+		&__link:hover, &__link.is-active {
+			.morphingShape {
+				path {
+					stroke: white !important;
+				}
+			}
+		}
+	}
+}
+
 .c-vertical-nav {
 	position: absolute;
-	right: 0;
+	right: 50px;
 	top: 50%;
+	transform: translateY(-50%);
 	z-index: 100;
 
-	&__link:hover {
+	&__link:hover, &__link.is-active {
 		.morphingShape {
 			path {
 				stroke: $color--blue !important;
 			}
 		}
 	}
+
+	li {
+		display: block;
+		width: 30px;
+		height: 30px;
+		position: relative;
+
+		a {
+			display: block;
+			height: 100%;
+			text-indent: -100000px;
+
+			svg {
+				position: absolute;
+				top: 50%;
+				left: 0;
+				right: 0;
+				margin: auto;
+				transform: translateY(-50%);
+			}
+
+			span {
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				z-index: 10;
+			}
+		}
+	}
+}
+
+.c-scroll-down-text {
+	position: absolute;
+	bottom: 30px;
+	right: 60px;
+	display: none;
 }

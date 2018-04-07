@@ -3,6 +3,7 @@
 class ScrollSlider {
 	constructor(_slider, _slideElement) {
 		var self = this; 
+		this.projectCounter = new ProjectCounter();
 		this.logoTyper = new LogoTyper('.js-logotyper', '.js-change-logo');
 		this.morphing = new NavMorphing();
 
@@ -32,7 +33,7 @@ class ScrollSlider {
 		}, this);
 	}
 
-	setSlide(slideId) {
+	setSlide(slideId, content) {
 		let currentId = document.querySelector('.js-slide.is-active').dataset.slideId;
 		let nextId;
 		let prevId;
@@ -90,13 +91,27 @@ class ScrollSlider {
 				document.querySelector('body').classList.remove('is-blue');
 			}
 		}, 300);
+
+		if (document.querySelector('.js-slide.is-active').dataset.content === 'projects') {
+			let number = 2;
+			this.projectCounter.toggleTemplate(true);
+			this.projectCounter.updateNumber(slideId - number);
+		} else {
+			this.projectCounter.toggleTemplate(false);
+		}
+
+		if (document.querySelector('.js-slide.is-active').dataset.slideId === '0') {
+			document.querySelector('body').classList.add('is-home');
+		} else {
+			document.querySelector('body').classList.remove('is-home');
+		}
 		
 
-		this.setNavigation(slideId);
+		this.setNavigation(slideId, content);
 	}
 
-	setNavigation(id) {
-		var name = id === 0 ? document.querySelector(`.js-slide[data-slide-id="0"]`).dataset.content : document.querySelector(`.js-slide[data-slide-id="${id}"]`).dataset.content;
+	setNavigation(id, content) {
+		var name = id === 0 ? document.querySelector(`.js-slide[data-slide-id="0"]`).dataset.content : content;
 		var previouseActive = document.querySelector('.js-slider-navItem.is-active');
 		let child = id !== 0 ? document.querySelector(`.js-slider-navItem[data-content="${name}"]`).children : document.querySelector(`.js-slider-navItem[data-slide-id="${id + 1}"]`).children;
 
@@ -134,14 +149,16 @@ class ScrollSlider {
 					if (e.deltaY < 0) { //up
 						let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
 						let prev = current === 0 ? current : current - 1;
+						let prevContent = document.querySelector(`.js-slide[data-slide-id="${prev}"]`).dataset.content;
 
-						self.setSlide(prev);
+						self.setSlide(prev, prevContent);
 					}
 					if (e.deltaY > 0) { //down
 						let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
 						let next = current === self.sliderElements.length - 1 ? current : current + 1;
+						let nextContent = document.querySelector(`.js-slide[data-slide-id="${next}"]`).dataset.content;
 
-						self.setSlide(next);
+						self.setSlide(next, nextContent);
 					}
 					scrollStatus.functionCall = true;
 				}
@@ -165,8 +182,9 @@ class ScrollSlider {
 				e.stopPropagation();
 
 				let slideId = Number(this.dataset.slideId);
-								
-				self.setSlide(slideId);
+				let content = this.dataset.content;
+
+				self.setSlide(slideId, content);
 			})
 		});
 	}
@@ -339,13 +357,47 @@ class NavMorphing {
 	}
 }
 
+class ProjectCounter {
+	constructor() {
+		this.projects = document.querySelectorAll('.js-slide[data-project-id]');
+		this.projectsId = [];
 
+		this.init();
+		this.template();
+		console.log(this.projectsId);
+	}
 
-const logo = new LogoTyper('.js-logotyper', '.js-change-logo');
+	init() {
+		this.projects.forEach((x,i) => {
+			let id = x.dataset.projectId;
+			this.projectsId.push(id);
+		});
+	}
+
+	template() {
+		document.querySelector('.l-header').innerHTML += `<div class='l-header__projects js-projects-tmpl'>[<span class="js-current-project">${this.projectsId[0]}</span> / ${this.projectsId[this.projects.length - 1]}]</div>`;
+	}
+
+	toggleTemplate(boolean) {
+		if (boolean) {
+			document.querySelector('.js-projects-tmpl').classList.add('is-active');
+		} else {
+			document.querySelector('.js-projects-tmpl').classList.remove('is-active');
+		}
+	}
+
+	updateNumber(id) {
+		document.querySelector('.js-current-project').innerHTML = this.projectsId[id];
+	}
+
+}
+
 
 const slider = new ScrollSlider('.js-slider', '.js-slide');
 
 const gallery = new Gallery();
+
+//const projectCounter = new ProjectCounter();
 
 //const navMorphing = new NavMorphing();
 

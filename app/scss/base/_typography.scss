@@ -8,6 +8,10 @@ body.is-blue {
 	.big-title, .perex {
 		color: $big-title__color--blue;
 	}
+
+	.small-title {
+		color: #6079E7;
+	}
 }
 
 .big-title {
@@ -21,4 +25,14 @@ body.is-blue {
 	font-size: 2rem;
 	line-height: 3.6rem;
 	color: #0E1122;
+}
+
+.small-title {
+	color: $color--grey-darker;
+	text-transform: uppercase;
+	font-family: "Pepi/Rudi Medium";
+	font-weight: normal;
+	font-style: normal;
+	font-size: 1.2rem;
+	letter-spacing: 2px;
 }

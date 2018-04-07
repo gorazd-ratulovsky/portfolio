@@ -3,6 +3,8 @@ $header--offset: $offset--base ($offset--base * 2);
 $header__logo-blue--color: $color--blue-lighter;
 $header__logo--color: $color--grey-darker;
 
+$header__project--color: $color--grey-darker;
+
 $header__lang-blue--color: $color--blue-lighter;
 $header__lang--color: $color--grey-darker;
 
@@ -56,7 +58,20 @@ body.is-blue {
     top: 0;
     left: 0;
     right: 0;
-    padding: $header--offset;
+    margin: $header--offset;
+
+    &__projects {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 0;
+        display: none;
+        font-size: 2.6rem;
+        color: $header__project--color;
+
+        &.is-active {
+            display: block;
+        }
+    }
 
     &__logo {
     	float: left;
@@ -152,6 +167,11 @@ body.is-blue {
     &--home {
         padding-bottom: $section--bottom-offset;
         //background-color: $color--blue;
+
+        .big-title {
+            font-size: 8.8rem;
+            line-height: 9.8rem;
+        }
 
         &.is-scrolling-down .big-title {
             opacity: 0;
