@@ -18,5 +18,51 @@ body.is-blue {
 
 	&--grey {
 		color: $btn-grey--color;
+
+		.e-btn__icon {
+			&:before {
+				background-color: $btn-grey--color;
+			}
+			&:after {
+				border-left-color: $btn-grey--color;
+			}
+		}
 	}
+
+	&__icon {
+		display: inline-block;
+		position: relative;
+		margin-left: 10px;
+		vertical-align: middle;
+		&:before { 
+			content: '';
+			display: block;
+			width: 45px;
+			height: 1.4px;
+			background: $btn--color;
+			transition: width 0.3s ease-in-out;
+		}
+
+		&:after {
+			content: '';
+			position: absolute;
+			border-top: 5px solid transparent;
+			border-bottom: 5px solid transparent;
+			border-left: 5px solid $btn--color;
+			top: -4.1px;
+			left: 100%;
+		}
+	}
+
+	&:hover {
+		.e-btn__icon {
+			&:before {
+				width: 100px;
+			}
+		}
+	}
+
+	.e-btn__icon-arrow{fill:$btn--color;fill-rule:evenodd;}
+	.e-btn__icon-line{fill:none;stroke:$btn--color;stroke-miterlimit:10;stroke-width:1.4px;}
 }
+

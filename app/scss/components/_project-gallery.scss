@@ -1,0 +1,50 @@
+.c-project-gallery {
+	&__item {
+		width: 200px;
+		height: 320px;
+		background: red;
+		&:nth-child(odd) {
+			background: blue;
+		}
+	}
+}
+
+.tns-inner {
+	margin-right: 30px;
+}
+
+.tns-outer {
+	position: relative;
+}
+
+.tns-controls {
+	position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+
+    button[data-controls="prev"] {
+    	position: absolute;
+    	left: 0;
+    	top: 0;
+    	bottom: 0;
+    	width: 50%;
+    	outline: 0;
+    	background: transparent;
+    	border: 0;
+    	cursor: w-resize;
+    }
+    button[data-controls="next"] {
+    	position: absolute;
+    	right: 0;
+    	top: 0;
+    	bottom: 0;
+    	width: 50%;
+    	outline: 0;
+    	background: transparent;
+    	border: 0;
+    	cursor: e-resize;
+    }
+}

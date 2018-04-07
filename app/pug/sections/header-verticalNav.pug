@@ -1,7 +1,9 @@
 header.l-header
 	div.l-header__logo.js-logotyper-parent
 		span.js-logotyper-changelogo(style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; ")
-		h1.js-logotyper(data-first-logo="gorazd—ratulovsky")
+		p.l-header__logo-text.js-logotyper(data-first-logo="gorazd—ratulovsky")
+		span.l-header__logo-symbol
+			include ../assets/logo-01.svg
 	ul.l-header__lang
 		li 
 			a(href="#").l-header__lang-item sk
@@ -10,8 +12,11 @@ header.l-header
 nav.c-vertical-nav
 	ul 
 		li 
-			a(href="#" data-slide-id="1" data-change-logo="about—gorazd").js-slider-navItem.js-change-logo a
+			a(href="#" data-slide-id="1" data-change-logo="about—gorazd" data-content="about-me").js-slider-navItem.js-change-logo.c-vertical-nav__link a
+				include ../assets/morp-01.svg
 		li 
-			a(href="#" data-slide-id="2" data-change-logo="gorazd—projects").js-slider-navItem.js-change-logo b
+			a(href="#" data-slide-id="2" data-change-logo="gorazd—projects" data-content="projects").js-slider-navItem.js-change-logo.c-vertical-nav__link b
+				include ../assets/morp-02.svg
 		li 
-			a(href="#" data-slide-id="3" data-change-logo="say—hello—gorazd").js-slider-navItem.js-change-logo c
+			a(href="#" data-slide-id="3" data-change-logo="say—hello—gorazd" data-content="contact-me").js-slider-navItem.js-change-logo.c-vertical-nav__link c
+				include ../assets/morp-03.svg

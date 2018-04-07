@@ -9,6 +9,9 @@
 @import 'base/base';
 @import 'base/typography';
 
+/* VENDORS FOLDER */
+@import 'vendors/tiny-slider';
+
 /* LAYOUT FOLDER */
 @import 'layout/grid';
 @import 'layout/sections';
@@ -17,5 +20,10 @@
 @import 'elements/btn';
 
 /* COMPONENTS FOLDER */
+@import 'components/contact';
+@import 'components/project-info';
+@import 'components/project';
+@import 'components/project-gallery';
+@import 'components/scroll-wrap';
+@import 'components/vertical-nav';
 
-/* VENDORS FOLDER */

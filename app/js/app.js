@@ -1,33 +1,10 @@
-// let type = "WebGL";
-// if(!PIXI.utils.isWebGLSupported()){
-// 	type = "canvas"
-// }
-
-// //Create a Pixi Application
-// let app = new PIXI.Application({ 
-//     width: 256,         // default: 800
-//     height: 256,        // default: 600
-//     antialias: true,    // default: false
-//     transparent: false, // default: false
-//     resolution: 1
-//   }
-// );
-
-// //app.renderer.backgroundColor = 0x061639;
-// document.querySelector('.js-test').onclick = function() {
-// 	app.renderer.backgroundColor = 0x061639;
-// }
-
-// //Add the canvas that Pixi automatically created for you to the HTML document
-// document.querySelector('.js-canvas').appendChild(app.view);
-
-// PIXI.utils.sayHello(type);
 "use strict";
 
 class ScrollSlider {
 	constructor(_slider, _slideElement) {
 		var self = this; 
 		this.logoTyper = new LogoTyper('.js-logotyper', '.js-change-logo');
+		this.morphing = new NavMorphing();
 
 		this.slider = _slider;
 		this.slideElement = _slideElement;
@@ -59,6 +36,7 @@ class ScrollSlider {
 		let currentId = document.querySelector('.js-slide.is-active').dataset.slideId;
 		let nextId;
 		let prevId;
+		let currentDataContent = document.querySelector('.js-slide.is-active').dataset.content;
 
 		// vracia true / false
 		if (currentId < slideId) { //next
@@ -105,29 +83,37 @@ class ScrollSlider {
 			}, 1000);
 		}
 
+		setTimeout(function() {
 			if (document.querySelector('.js-slide.is-active').dataset.bg === 'blue') {
 				document.querySelector('body').classList.add('is-blue');
 			} else {
 				document.querySelector('body').classList.remove('is-blue');
 			}
+		}, 300);
 		
 
 		this.setNavigation(slideId);
 	}
 
 	setNavigation(id) {
+		var name = id === 0 ? document.querySelector(`.js-slide[data-slide-id="0"]`).dataset.content : document.querySelector(`.js-slide[data-slide-id="${id}"]`).dataset.content;
 		var previouseActive = document.querySelector('.js-slider-navItem.is-active');
-		//let setLogo = document.querySelector('.js-change-logo.is-active').dataset.changeLogo;
-		
+		let child = id !== 0 ? document.querySelector(`.js-slider-navItem[data-content="${name}"]`).children : document.querySelector(`.js-slider-navItem[data-slide-id="${id + 1}"]`).children;
+
 		if(previouseActive) {
 			previouseActive.classList.remove('is-active');
+			this.morphing.toCircle(previouseActive.children[0]);
 		}
 
-		if (id !== 0) {
-			document.querySelector(`.js-slider-navItem[data-slide-id="${id}"]`).classList.add('is-active');
+		if (name !== 'home') {
+			document.querySelector(`.js-slider-navItem[data-content="${name}"]`).classList.add('is-active');
 			this.logoTyper.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
-		} else {
+			this.morphing.toTriangle(child[0]);
+			
+		} else if (name === 'home') {
+			document.querySelector(`.js-slider-navItem[data-slide-id="${id + 1}"]`).classList.remove('is-active');
 			this.logoTyper.changeLogo(document.querySelector('.js-logotyper').dataset.firstLogo);
+			this.morphing.toCircle(child[0]);
 		}
 	}
 
@@ -164,7 +150,7 @@ class ScrollSlider {
 				scrollTimer = window.setTimeout(() => {
 					scrollStatus.wheeling = false;
 					scrollStatus.functionCall = false;
-				}, 100); //set this millisecond to your liking
+				}, 200); //set this millisecond to your liking
 			});
 		});
 	}
@@ -176,6 +162,7 @@ class ScrollSlider {
 		document.querySelectorAll('.js-slider-navItem').forEach( (x,i) => {
 			x.addEventListener('click', function(e){
 				e.preventDefault();
+				e.stopPropagation();
 
 				let slideId = Number(this.dataset.slideId);
 								
@@ -188,6 +175,7 @@ class ScrollSlider {
 class LogoTyper {
 	constructor(initElement, changeElement) {
 		var self = this;
+		this.morphing = new NavMorphing();
 
 		this.mainElement = document.querySelector(initElement);
 		this.randomLogos = ['gorazd—design', 'gorazd—interactive', 'gorazd—coding'];
@@ -242,10 +230,14 @@ class LogoTyper {
 		var self = _this;
 
 		self.changeLogoElements.forEach((x, i) => {
+			let parent = x;
+			let child = x.children;
+
 			x.addEventListener('mouseenter', function(e) {
 				let dataLogo = this.dataset.changeLogo;
 
 				self.changeLogo(dataLogo);
+				self.morphing.toSquare(child[0]);
 			});
 
 			x.addEventListener('mouseout', (e) => {
@@ -257,6 +249,11 @@ class LogoTyper {
 					self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
 				} 
 
+				if (x.classList.contains('is-active')) {
+					self.morphing.toTriangle(child[0]);
+				} else {
+					self.morphing.toCircle(child[0]);
+				}
 			});
 		});
 
@@ -273,18 +270,87 @@ class LogoTyper {
 			} else if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === Number(document.querySelector('.js-change-logo.is-active').dataset.slideId)) {
 				self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
 			} 
-			//self.changeLogo(logoID);
 		});
 	}
 }
 
 class Gallery {
 	constructor() {
+		this.init();
+	}
 
+	init() {
+		let galleries = document.querySelectorAll('.js-project-gallery');
+
+		galleries.forEach((x, i) => {
+			let slider = tns({
+				container: x,
+				items: 1,
+				mouseDrag: true,
+				lazyload: true,
+				nav: false,
+				controlsText: ["", ""],
+				slideBy: 'page'
+			});
+		});
 	}
 }
+
+class NavMorphing {
+	constructor(element) {
+		var self = this;
+
+		this.svg;
+		this.s;
+
+		this.triangle;
+		this.square;
+		this.circle;
+
+		this.trianglePoints = 'M1,6.35,11,.85v11Z';
+		this.squarePoints = 'M.5.5h9v9H.5Z';
+		this.circlePoints = 'M.5,5A4.5,4.5,0,1,1,5,9.5,4.5,4.5,0,0,1,.5,5Z';
+	}
+
+	init(el) {
+		this.svg = el;
+		this.s = Snap(this.svg);
+
+		this.triangle = Snap.select('#' + el.getAttribute('id') +  ' .triangle');
+		this.square = Snap.select('#' + el.getAttribute('id') +  ' .square');
+		this.circle = Snap.select('#' + el.getAttribute('id') +  ' .circle');
+	}
+
+
+	toSquare(el) {
+		this.init(el);
+
+		this.circle.animate({ d: this.squarePoints }, 500, mina.backout);  
+	}
+
+	toCircle(el) {
+		this.init(el);
+		this.circle.animate({ d: this.circlePoints }, 500, mina.backout); 
+	}
+
+	toTriangle(el) {
+		this.init(el);
+		this.circle.animate({ d: this.trianglePoints }, 500, mina.backout); 
+	}
+}
+
+
 
 const logo = new LogoTyper('.js-logotyper', '.js-change-logo');
 
 const slider = new ScrollSlider('.js-slider', '.js-slide');
+
+const gallery = new Gallery();
+
+//const navMorphing = new NavMorphing();
+
+// svg.addEventListener('mouseover', function() {
+// 	toCircle();
+// });
+
 

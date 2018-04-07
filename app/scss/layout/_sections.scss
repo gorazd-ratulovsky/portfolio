@@ -41,6 +41,12 @@ body.is-blue {
 				}
 			}
 		}
+
+        &__logo-symbol {
+            svg path {
+                fill: $header__logo-blue--color;
+            }
+        }
 	}
 }
 
@@ -59,6 +65,16 @@ body.is-blue {
     	color: $header__logo--color;
         position: relative;
         transition: color 0.3s ease;
+    }
+
+    &__logo-symbol {
+        position: relative;
+        top: -13px;
+        margin-left: 8px;
+    }
+
+    &__logo-text {
+        display: inline-block;
     }
 
     &__lang {
@@ -103,24 +119,26 @@ body.is-blue {
 
 .l-section {
 	position: absolute;
-	top: 100%;
+	top: 0;
 	left: 0;
 	right: 0;
 	width: 100%;
     height: 100vh;
-    background-color: $color--light;
-    transform: translateY(0%);
-    
-    transition: transform 0.3s ease;
+    //background-color: $color--light;
+    //transform: translateY(0%);
+    visibility: hidden;
+    opacity: 0;
+    //transition: visibility 0.4s ease, opacity 0.4s 0.4s ease;
 
-    &.is-visible {
+    &.is-active {
         z-index:10;
-        transform: translateY(-100%);
+    }
+
+    &.is-visible, &.is-active {
+        visibility: visible;
+        opacity: 1;
     }
  
-    &.is-scrolling-down {
-        transform: translateY(-200%);
-    }
 /*
     &.is-scrolling-down--next {
         //transform: translateY(-100%);
@@ -133,14 +151,29 @@ body.is-blue {
 
     &--home {
         padding-bottom: $section--bottom-offset;
-        background-color: $color--blue;
+        //background-color: $color--blue;
+
+        &.is-scrolling-down .big-title {
+            opacity: 0;
+            animation-name: fadeoutUP_bigtitle;
+            animation-duration: 0.4s; 
+            animation-delay: 0s;  
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out; 
+        }
+
+        &.is-scrolling-up--prev .big-title {
+            opacity: 0;
+            animation-name: fadeinDOWN_bigtitle;
+            animation-duration: 0.4s; 
+            animation-delay: 0.4s;  
+            animation-fill-mode: forwards;
+            animation-timing-function: ease-in-out; 
+        }
     }
 
     &--about-me {
         padding-bottom: $section--bottom-offset - 5px;
-            &.is-active {
-                transform: translateY(0%);
-            }
 
         .perex {
             margin-bottom: 60px;
@@ -153,14 +186,147 @@ body.is-blue {
 
     &--contact-me {
         padding-bottom: $section--bottom-offset;
-        background-color: $color--blue;
+        //background-color: $color--blue;
+    }
+
+    /* ANIMATION */
+    &.is-scrolling-down .animation1 {
+        //opacity: 0;
+        animation-name: fadeoutUP;
+        animation-duration: 0.4s; 
+        animation-delay: 0s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-down .animation2 {
+        //opacity: 0;
+        animation-name: fadeoutUP;
+        animation-duration: 0.4s; 
+        animation-delay: 0.04s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-down .animation3 {
+        //opacity: 0;
+        animation-name: fadeoutUP;
+        animation-duration: 0.4s; 
+        animation-delay: 0.08s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+
+
+    &.is-scrolling-down--next .animation1 {
+        opacity: 0;
+        animation-name: fadeinUP;
+        animation-duration: 0.4s; 
+        animation-delay: 0.3s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-down--next .animation2 {
+        opacity: 0;
+        animation-name: fadeinUP;
+        animation-duration: 0.4s; 
+        animation-delay: 0.34s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-down--next .animation3 {
+        opacity: 0;
+        animation-name: fadeinUP;
+        animation-duration: 0.4s; 
+        animation-delay: 0.38s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+
+
+    &.is-scrolling-up .animation1 {
+        //opacity: 0;
+        animation-name: fadeoutDOWN;
+        animation-duration: 0.4s; 
+        animation-delay: 0.08s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-up .animation2 {
+        //opacity: 0;
+        animation-name: fadeoutDOWN;
+        animation-duration: 0.4s; 
+        animation-delay: 0.04s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-up .animation3 {
+        //opacity: 0;
+        animation-name: fadeoutDOWN;
+        animation-duration: 0.4s; 
+        animation-delay: 0s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-up--prev .animation1 {
+        opacity: 0;
+        animation-name: fadeinDOWN;
+        animation-duration: 0.4s; 
+        animation-delay: 0.38s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-up--prev .animation2 {
+        opacity: 0;
+        animation-name: fadeinDOWN;
+        animation-duration: 0.4s; 
+        animation-delay: 0.34s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-up--prev .animation3 {
+        opacity: 0;
+        animation-name: fadeinDOWN;
+        animation-duration: 0.4s; 
+        animation-delay: 0.3s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
     }
 }
 
-@keyframes mymove {
-    0% {transform: translateY(100%) skewY(0deg) scaleY(1); }
-    //50% {transform: translateY(50%) skewY(0deg) scaleY(1); }
-    100% {transform: translateY(0%) skewY(0deg) scaleY(1); }
-    //100% {transform: translateY(-110%) skewY(-6deg) scaleY(0.7); }
+@keyframes fadeoutUP_bigtitle {
+    0% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
+    100% {transform: translateY(-200%) skewY(15deg) scaleY(4.6); opacity: 0; }
+}
+@keyframes fadeinDOWN_bigtitle {
+    0% {transform: translateY(-200%) skewY(-15deg) scaleY(4.6); opacity: 0; }
+    100% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
+}
+
+@keyframes fadeoutUP {
+    0% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
+    100% {transform: translateY(-100%) skewY(0deg) scaleY(1.3); opacity: 0; }
+}
+
+@keyframes fadeinUP {
+    0% {transform: translateY(100%) skewY(0deg) scaleY(1.3); opacity: 0; }
+    100% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
+}
+@keyframes fadeoutDOWN {
+    0% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
+    100% {transform: translateY(100%) skewY(0deg) scaleY(1.3); opacity: 0; }
+}
+@keyframes fadeinDOWN {
+    0% {transform: translateY(-100%) skewY(0deg) scaleY(1.3); opacity: 0; }
+    100% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
 }
 
