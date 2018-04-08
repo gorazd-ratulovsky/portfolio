@@ -66,3 +66,15 @@ body.is-blue {
 	.e-btn__icon-line{fill:none;stroke:$btn--color;stroke-miterlimit:10;stroke-width:1.4px;}
 }
 
+.e-back-link {
+	position: absolute;
+    top: 44px;
+    display: block;
+    left: 25px;
+    transition:  transform 0.3s ease-in-out;
+
+    &:hover {
+    	transform: translateX(-7px);
+    }
+}
+

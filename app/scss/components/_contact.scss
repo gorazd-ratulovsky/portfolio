@@ -28,6 +28,40 @@
 			width: 100%;
 			background-color: transparentize(white, 0.8);
 		}
+		.c-contact__mail {
+			&-icon {
+				display: inline-block;
+				position: relative;
+				margin-left: 30px;
+				vertical-align: middle;
+				&:before { 
+					content: '';
+					display: block;
+					width: 60px;
+					height: 1.4px;
+					background: $color--blue-lighter;
+					transition: width 0.3s ease-in-out;
+				}
+
+				&:after {
+					content: '';
+					position: absolute;
+					border-top: 5px solid transparent;
+					border-bottom: 5px solid transparent;
+					border-left: 5px solid $color--blue-lighter;
+					top: -4.1px;
+					left: 100%;
+				}
+			}
+
+			&:hover {
+				.c-contact__mail-icon {
+					&:before {
+						width: 100px;
+					}
+				}
+			}
+		}
 	}
 
 	&__list {

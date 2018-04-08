@@ -1,4 +1,63 @@
 "use strict";
+class LoadContent {
+	constructor() {
+		var self = this;
+
+		//this.scrollSlider = new ScrollSlider('.js-slider', '.js-slide');
+
+		let transEffect = Barba.BaseTransition.extend({
+			start: function(){
+				// console.log(this.oldContainer.classList.add('fade-out'));
+				// console.log(this.newContainerLoading);
+				Promise
+					.all([this.newContainerLoading, this.fadeOut()])
+					.then(this.fadeIn.bind(this));
+			},
+			fadeOut: function() {
+				return this.oldContainer.classList.add('fade-out-section');
+			},
+			fadeIn: function() {
+				var _this = this;
+				var el = this.newContainer;
+
+				el.classList.add('fade-in-section');
+
+				setTimeout(function(){
+					el.classList.remove('fade-in-section');
+					_this.done();
+				}, 1000);
+			}
+		});
+
+		var homepage = Barba.BaseView.extend({
+			namespace: 'homepage',
+			onLeaveCompleted: function() {
+				document.body.classList.add('is-subpage');
+			}
+		});
+
+		var subpage = Barba.BaseView.extend({
+			namespace: 'sub-page',
+
+			onLeaveCompleted: function() {
+				//self.scrollSlider.pushItems();
+				document.body.classList.remove('is-subpage');
+				document.body.classList.add('is-blue', 'is-home');
+			}
+		});
+
+		homepage.init();
+		subpage.init();
+
+		Barba.Pjax.getTransition = function() {
+			return transEffect;
+		}
+
+		Barba.Pjax.start();
+	}
+
+}
+
 
 class ScrollSlider {
 	constructor(_slider, _slideElement) {
@@ -142,33 +201,35 @@ class ScrollSlider {
 			};
 			var scrollTimer = false;
 
-			window.addEventListener('wheel', (e) => {
-				scrollStatus.wheeling = true;
-				if (!scrollStatus.functionCall) {
+			if (document.querySelector('.js-slide') !== null) {
+				window.addEventListener('wheel', (e) => {
+					scrollStatus.wheeling = true;
+					if (!scrollStatus.functionCall) {
 
-					if (e.deltaY < 0) { //up
-						let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
-						let prev = current === 0 ? current : current - 1;
-						let prevContent = document.querySelector(`.js-slide[data-slide-id="${prev}"]`).dataset.content;
+						if (e.deltaY < 0) { //up
+							let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
+							let prev = current === 0 ? current : current - 1;
+							let prevContent = document.querySelector(`.js-slide[data-slide-id="${prev}"]`).dataset.content;
 
-						self.setSlide(prev, prevContent);
+							self.setSlide(prev, prevContent);
+						}
+						if (e.deltaY > 0) { //down
+							let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
+							let next = current === self.sliderElements.length - 1 ? current : current + 1;
+							let nextContent = document.querySelector(`.js-slide[data-slide-id="${next}"]`).dataset.content;
+
+							self.setSlide(next, nextContent);
+						}
+						scrollStatus.functionCall = true;
 					}
-					if (e.deltaY > 0) { //down
-						let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
-						let next = current === self.sliderElements.length - 1 ? current : current + 1;
-						let nextContent = document.querySelector(`.js-slide[data-slide-id="${next}"]`).dataset.content;
 
-						self.setSlide(next, nextContent);
-					}
-					scrollStatus.functionCall = true;
-				}
-
-				window.clearInterval(scrollTimer);
-				scrollTimer = window.setTimeout(() => {
-					scrollStatus.wheeling = false;
-					scrollStatus.functionCall = false;
-				}, 200); //set this millisecond to your liking
-			});
+					window.clearInterval(scrollTimer);
+					scrollTimer = window.setTimeout(() => {
+						scrollStatus.wheeling = false;
+						scrollStatus.functionCall = false;
+					}, 200); //set this millisecond to your liking
+				});
+			}
 		});
 	}
 
@@ -196,7 +257,7 @@ class LogoTyper {
 		this.morphing = new NavMorphing();
 
 		this.mainElement = document.querySelector(initElement);
-		this.randomLogos = ['gorazd—design', 'gorazd—interactive', 'gorazd—coding'];
+		this.randomLogos = ['gorazd—design', 'gorazd—interactive', 'gorazd—coding', 'gorazd—digital'];
 		this.changeLogoElements = document.querySelectorAll(changeElement);
 
 		this.firstLogo(this.mainElement.dataset.firstLogo);
@@ -283,11 +344,15 @@ class LogoTyper {
 		document.querySelector('.js-logotyper-changelogo').addEventListener('mouseout', (e) => {
 			let dataLogo = self.mainElement.dataset.firstLogo;
 
-			if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === 0) {
+			if (document.querySelector('.js-slide') !== null) {
+				if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === 0) {
+					self.changeLogo(dataLogo);
+				} else if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === Number(document.querySelector('.js-change-logo.is-active').dataset.slideId)) {
+					self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
+				} 
+			} else {
 				self.changeLogo(dataLogo);
-			} else if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === Number(document.querySelector('.js-change-logo.is-active').dataset.slideId)) {
-				self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
-			} 
+			}
 		});
 	}
 }
@@ -325,9 +390,9 @@ class NavMorphing {
 		this.square;
 		this.circle;
 
-		this.trianglePoints = 'M1,6.35,11,.85v11Z';
-		this.squarePoints = 'M.5.5h9v9H.5Z';
-		this.circlePoints = 'M.5,5A4.5,4.5,0,1,1,5,9.5,4.5,4.5,0,0,1,.5,5Z';
+		this.trianglePoints = 'M3.27,9l10-5.5v11Z';
+		this.squarePoints = 'M4.5,4.5h9v9h-9Z';
+		this.circlePoints = 'M4.5,9A4.5,4.5,0,1,1,9,13.5,4.5,4.5,0,0,1,4.5,9Z';
 	}
 
 	init(el) {
@@ -364,7 +429,6 @@ class ProjectCounter {
 
 		this.init();
 		this.template();
-		console.log(this.projectsId);
 	}
 
 	init() {
@@ -391,18 +455,18 @@ class ProjectCounter {
 	}
 
 }
+//const ajaxContent = new LoadContent();
 
+const logoTyper = new LogoTyper('.js-logotyper', '.js-change-logo');
 
 const slider = new ScrollSlider('.js-slider', '.js-slide');
 
 const gallery = new Gallery();
 
-//const projectCounter = new ProjectCounter();
 
-//const navMorphing = new NavMorphing();
 
-// svg.addEventListener('mouseover', function() {
-// 	toCircle();
-// });
+
+
+
 
 

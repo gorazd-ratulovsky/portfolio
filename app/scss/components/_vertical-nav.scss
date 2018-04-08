@@ -8,6 +8,12 @@ body.is-home {
 	}
 }
 
+.is-subpage {
+	.c-vertical-nav {
+		display: none;
+	}
+}
+
 body.is-blue {
 	.c-vertical-nav {
 		.morphingShape {
