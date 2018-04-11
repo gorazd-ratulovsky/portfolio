@@ -1,0 +1,21 @@
+html
+	head
+		title
+		link(rel="stylesheet" href="https://webfonts.fontstand.com/WF-003967-50d7ef660a15a6a02aad988ada1b94b9.css" type="text/css")
+		link(rel="stylesheet" type="text/css" href="styles/bundle.css")
+	body.is-subpage
+		include sections/header-verticalNav.pug
+		div#barba-wrapper
+			div.barba-container(data-namespace="sub-page")
+				a(href="index.html" title="Back to homepage").e-back-link
+					include assets/arrow-back-02.svg
+				include sections/sub-methodical-center-en.pug
+				
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.6.0/min/tiny-slider.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js")
+		script(src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js")
+		script(src="scripts/app.js")
+
+
+
+//- pri scrolle sa bude menit trieda na body ktora bude menit pozadie

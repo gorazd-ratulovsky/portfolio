@@ -1,0 +1,49 @@
+.c-case-study {
+	padding-top: 330px;
+	&__header {
+		width: 75%;
+		padding-left: 30px;
+		margin-bottom: 20px;
+		h2 {
+			margin-bottom: 40px;
+		}
+	}
+
+	&__title {
+		font-size: 5.4rem;
+		color: $color--grey-darker;
+		line-height: 1.25;
+		margin-bottom: 60px;
+		margin-top: -70px;
+	}
+
+	&__subtitle {
+		font-size: 2.5rem;
+		color: $color--grey-darker;
+		line-height: 1.4;
+		margin-bottom: 15px;
+		font-family: "Pepi/Rudi Medium";
+	}
+
+	&__title-number {
+		display: block;
+		color: $color--blue;
+	}
+	&__section {
+		.wrap {
+			padding: 140px 90px 100px;
+		}
+	}
+	&__content {
+		&--separator {
+			.wrap {
+				border-top: 1px solid #E0E2E9;
+			}
+		}
+	}
+
+	&__images {
+		background: white;
+		padding: 90px 0;
+	}
+}

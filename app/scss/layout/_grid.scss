@@ -1,11 +1,20 @@
 $wrap--offset: 0 ($offset--base * 2);
 .wrap {
 	margin: 0 auto;
-	max-width: 100%;
+	max-width: 1660px;
+	width: 100%;
 	padding: $wrap--offset;
 
 	&--full {
 		height: 100%;
+	}
+
+	@media screen and (min-width: $viewport--xxxl) {
+		max-width: 2100px;
+	}
+
+	@media (min-width: $viewport--xl) and (max-width: $viewport--xxl) {
+		padding: 0 100px;
 	}
 }
 

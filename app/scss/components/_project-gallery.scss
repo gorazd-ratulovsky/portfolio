@@ -1,17 +1,21 @@
 .c-project-gallery {
+    margin-right: 30px;
+    margin-bottom: 20px;
 	&__item {
 		width: 200px;
-		height: 320px;
-		background: red;
+		//height: 320px;
+		//background: red;
 		&:nth-child(odd) {
-			background: blue;
+			//background: blue;
 		}
+
+        img {
+            width: 100%;
+        }
 	}
 }
 
-.tns-inner {
-	margin-right: 30px;
-}
+
 
 .tns-outer {
 	position: relative;

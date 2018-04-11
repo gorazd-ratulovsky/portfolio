@@ -1,5 +1,12 @@
 html {
 	font-size: 62.5%;
+	@media screen and (min-width: $viewport--xxl) {
+		font-size: 78%;
+	}
+
+	@media screen and (min-width: $viewport--xxxl) {
+		font-size: 94%;
+	}
 }
 
 body {

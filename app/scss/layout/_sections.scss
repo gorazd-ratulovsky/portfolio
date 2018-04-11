@@ -1,4 +1,4 @@
-$header--offset: $offset--base ($offset--base * 2);
+$header--offset: $offset--base auto;
 
 $header__logo-blue--color: $color--blue-lighter;
 $header__logo--color: $color--grey-darker;
@@ -67,7 +67,20 @@ body.is-blue {
     top: 0;
     left: 0;
     right: 0;
+    padding: 0 60px;
     margin: $header--offset;
+    max-width: 1660px;
+    width: 100%; 
+    @media screen and (min-width: $viewport--xl) {
+        padding-top: 20px;
+    }
+    @media (min-width: $viewport--xl) and (max-width: $viewport--xxl) {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+    @media screen and (min-width: $viewport--xxxl) {
+        max-width: 2100px;
+    }
 
     &__projects {
         position: absolute;
@@ -76,6 +89,14 @@ body.is-blue {
         display: none;
         font-size: 2.6rem;
         color: $header__project--color;
+
+        @media (min-width: $viewport--xl) and (max-width: $viewport--xxl) {
+            left: 100px;
+        }
+        @media screen and (min-width: $viewport--xxl) {
+            left: 60px;
+            font-size: 2.1rem;
+        }
 
         &.is-active {
             display: block;
@@ -89,6 +110,9 @@ body.is-blue {
     	color: $header__logo--color;
         position: relative;
         transition: color 0.3s ease;
+        @media screen and (min-width: $viewport--xxl) {
+            font-size: 3.4rem;
+        }
     }
 
     &__logo-symbol {
@@ -113,6 +137,9 @@ body.is-blue {
     		line-height: 1;
     		color: $header__lang--color;
             transition: color 0.3s ease;
+            @media screen and (min-width: $viewport--xxl) {
+                font-size: 2.1rem;
+            }
 
     		&:after {
     			content: '/';
@@ -180,6 +207,14 @@ body.is-blue {
         .big-title {
             font-size: 8.8rem;
             line-height: 9.8rem;
+            @media screen and (min-width: $viewport--xxl) {
+                line-height: 11.8rem;
+                padding-bottom: 30px;
+            }
+
+            @media screen and (min-width: $viewport--xxl) {
+                padding-bottom: 60px;
+            }
         }
 
         &.is-scrolling-down .big-title {
@@ -207,14 +242,23 @@ body.is-blue {
         .perex {
             margin-bottom: 60px;
         }
+        @media screen and (min-width: $viewport--xxl) {
+            padding-bottom: 110px;
+        }
     }
 
     &--projects {
         padding-bottom: $section--bottom-offset;
+        @media screen and (min-width: $viewport--xxl) {
+            padding-bottom: 120px;
+        }
     }
 
     &--contact-me {
         padding-bottom: $section--bottom-offset;
+        @media screen and (min-width: $viewport--xxl) {
+            padding-bottom: 120px;
+        }
         //background-color: $color--blue;
     }
 
@@ -330,6 +374,11 @@ body.is-blue {
         animation-fill-mode: forwards;
         animation-timing-function: ease-in-out; 
     }
+}
+
+.l-sub-case-study {
+    height: 100vh;
+    overflow: scroll;
 }
 
 @keyframes fadeoutUP_bigtitle {
