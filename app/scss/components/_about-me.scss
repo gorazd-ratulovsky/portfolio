@@ -28,10 +28,20 @@
 
 	&__text {
 		padding-top: 250px;
+		@media screen and (min-width: $viewport--xxl) {
+			max-width: 910px;
+			margin-left: auto;
+			padding-right: 60px;
+		}
 	}
 
 	&__skills {
 		margin-top: 60px;
+		@media screen and (min-width: $viewport--xxl) {
+			max-width: 910px;
+			margin-left: auto;
+			padding-right: 60px;
+		}
 	}
 
 	&__skills-list {

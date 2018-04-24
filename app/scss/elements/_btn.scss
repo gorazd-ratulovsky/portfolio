@@ -68,10 +68,11 @@ body.is-blue {
 
 .e-back-link {
 	position: absolute;
-    top: 44px;
+    top: 64px;
     display: block;
     left: 25px;
     transition:  transform 0.3s ease-in-out;
+    z-index: 10000;
 
     &:hover {
     	transform: translateX(-7px);

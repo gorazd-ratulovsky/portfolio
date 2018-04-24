@@ -15,10 +15,16 @@ $section--bottom-offset: $offset--base * 2;
 
 body.is-subpage {
     .l-header {
-        margin-left: 90px;
+        
     }
     .l-header__lang {
         display: none;
+    }
+}
+
+body.is-case-study {
+    .l-header {
+        margin-left: 30px;
     }
 }
 
@@ -58,6 +64,12 @@ body.is-blue {
                 fill: $header__logo-blue--color;
             }
         }
+        &__lang-item {
+            &.is-active {
+                color: white;
+                text-decoration: line-through;
+            }
+        }
 	}
 }
 
@@ -75,8 +87,8 @@ body.is-blue {
         padding-top: 20px;
     }
     @media (min-width: $viewport--xl) and (max-width: $viewport--xxl) {
-        padding-left: 100px;
-        padding-right: 100px;
+        padding-left: 90px;
+        padding-right: 90px;
     }
     @media screen and (min-width: $viewport--xxxl) {
         max-width: 2100px;
@@ -165,6 +177,13 @@ body.is-blue {
     			color: $header__lang--color--active;
     		}
     	}
+    }
+
+    &__lang-item {
+        &.is-active {
+            color: $header__lang--color--active;
+            text-decoration: line-through;
+        }
     }
 }
 
@@ -290,6 +309,23 @@ body.is-blue {
         animation-timing-function: ease-in-out; 
     }
 
+    &.is-scrolling-down .anm-project-sliding {
+        //opacity: 0;
+        animation-name: slideoutUP_project;
+        animation-duration: 0.4s; 
+        animation-delay: 0s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-down .anm-project-fading {
+        animation-name: fadeout_project;
+        animation-duration: 0.4s; 
+        animation-delay: 0s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
 
 
     &.is-scrolling-down--next .animation1 {
@@ -315,6 +351,25 @@ body.is-blue {
         animation-name: fadeinUP;
         animation-duration: 0.4s; 
         animation-delay: 0.38s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-down--next .anm-project-fading {
+        opacity: 0;
+        animation-name: fadein_project;
+        animation-duration: 0.4s; 
+        animation-delay: 0.2s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+
+    &.is-scrolling-down--next .anm-project-sliding {
+        opacity: 0;
+        animation-name: slideinUP_project;
+        animation-duration: 0.3s; 
+        animation-delay: 0.1s;  
         animation-fill-mode: forwards;
         animation-timing-function: ease-in-out; 
     }
@@ -348,6 +403,26 @@ body.is-blue {
         animation-timing-function: ease-in-out; 
     }
 
+    &.is-scrolling-up .anm-project-sliding {
+        //opacity: 0;
+        animation-name: slideoutDOWN_project;
+        animation-duration: 0.4s; 
+        animation-delay: 0.08s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-up .anm-project-fading {
+        //opacity: 0;
+        animation-name: fadeout_project;
+        animation-duration: 0.4s; 
+        animation-delay: 0.08s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+
+
     &.is-scrolling-up--prev .animation1 {
         opacity: 0;
         animation-name: fadeinDOWN;
@@ -374,6 +449,24 @@ body.is-blue {
         animation-fill-mode: forwards;
         animation-timing-function: ease-in-out; 
     }
+
+    &.is-scrolling-up--prev .anm-project-sliding {
+        opacity: 0;
+        animation-name: slideinDOWN_project;
+        animation-duration: 0.4s; 
+        animation-delay: 0.08s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
+
+    &.is-scrolling-up--prev .anm-project-fading {
+        opacity: 0;
+        animation-name: fadein_project;
+        animation-duration: 0.4s; 
+        animation-delay: 0.28s;  
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in-out; 
+    }
 }
 
 .l-sub-case-study {
@@ -383,10 +476,10 @@ body.is-blue {
 
 @keyframes fadeoutUP_bigtitle {
     0% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
-    100% {transform: translateY(-200%) skewY(15deg) scaleY(4.6); opacity: 0; }
+    100% {transform: translateY(-150%) skewY(10deg) scaleY(3); opacity: 0; }
 }
 @keyframes fadeinDOWN_bigtitle {
-    0% {transform: translateY(-200%) skewY(-15deg) scaleY(4.6); opacity: 0; }
+    0% {transform: translateY(-150%) skewY(-10deg) scaleY(3); opacity: 0; }
     100% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
 }
 
@@ -406,5 +499,33 @@ body.is-blue {
 @keyframes fadeinDOWN {
     0% {transform: translateY(-100%) skewY(0deg) scaleY(1.3); opacity: 0; }
     100% {transform: translateY(0%) skewY(0deg) scaleY(1); opacity: 1; }
+}
+
+
+@keyframes slideoutUP_project {
+    0% {transform: translateY(0%); opacity: 1; }
+    100% {transform: translateY(-100%); opacity: 0; }
+}
+
+@keyframes slideinUP_project {
+    0% {transform: translateY(100%); opacity: 0; }
+    100% {transform: translateY(0%); opacity: 1; }
+}
+@keyframes slideoutDOWN_project {
+    0% {transform: translateY(0%); opacity: 1; }
+    100% {transform: translateY(100%); opacity: 0; }
+}
+@keyframes slideinDOWN_project {
+    0% {transform: translateY(-100%); opacity: 0; }
+    100% {transform: translateY(0%); opacity: 1; }
+}
+
+@keyframes fadeout_project {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes fadein_project {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 

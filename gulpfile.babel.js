@@ -12,9 +12,9 @@ import rename from 'gulp-rename';
 import pug from 'gulp-pug';
 
 import babel from 'gulp-babel';
+import webpack from 'webpack-stream';
 import concat from 'gulp-concat';
 import uglify from 'gulp-uglify';
-
 
 export const server = () => {
 	const serverFiles = ['app/**/*.*'],
@@ -54,10 +54,30 @@ export const templates = () => {
 export const scripts = () => {
 	return gulp.src(config.paths.scripts.src)
 		//.pipe(sourcemaps.init())
-		.pipe(babel())
+		//.pipe(babel())
+		.pipe(webpack({
+      output: {
+        filename: 'app.js'
+      },
+      module: {
+        rules: [
+          {
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            use: {
+              loader: 'babel-loader',
+              options: {
+                presets: ['env']
+              }
+            }
+          }
+        ]
+      },
+      devtool: '#inline-source-map'
+    }))
 		.pipe(uglify())
 		//.pipe(sourcemaps.write(config.paths.scripts.maps))
-		.pipe(concat('app.js'))
+		//.pipe(concat('app.js'))
 		.pipe(gulp.dest(config.paths.scripts.dest))
 		.pipe(browserSync.stream());
 };
