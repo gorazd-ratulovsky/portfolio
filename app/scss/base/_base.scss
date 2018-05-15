@@ -1,11 +1,16 @@
 html {
-	font-size: 62.5%;
+	font-size: 50%;
+
 	@media screen and (min-width: $viewport--xxl) {
 		font-size: 78%;
 	}
 
 	@media screen and (min-width: $viewport--xxxl) {
 		font-size: 94%;
+	}
+
+	@media only screen and (min-width: $viewport--l) { 
+		font-size: 62.5%;
 	}
 }
 
@@ -18,6 +23,12 @@ body {
 	background-color: $color--light;
 	overflow: hidden;
 	transition: background-color 0.4s 0s ease-in-out;
+
+	@media (min-width: 300px) and (max-width: $viewport--m) { 
+		&.is-subpage {
+			overflow: inherit;
+		}
+	}
 
 	&.is-blue {
 		background-color: $color--blue;

@@ -64,11 +64,15 @@ body.is-blue {
 
 	.e-btn__icon-arrow{fill:$btn--color;fill-rule:evenodd;}
 	.e-btn__icon-line{fill:none;stroke:$btn--color;stroke-miterlimit:10;stroke-width:1.4px;}
+
+	@media (min-width: 300px) and (max-width: $viewport--m) { 
+        font-size: 2.2rem;
+    }
 }
 
 .e-back-link {
 	position: absolute;
-    top: 64px;
+    top: 58px;
     display: block;
     left: 25px;
     transition:  transform 0.3s ease-in-out;
@@ -76,6 +80,16 @@ body.is-blue {
 
     &:hover {
     	transform: translateX(-7px);
+    }
+
+    @media (min-width: 300px) and (max-width: $viewport--m) { 
+		svg {
+			width: 26px !important;
+		}
+	}
+
+	@media (min-width: $viewport--l) and (max-width: $viewport--xl) { 
+        top: 44px;
     }
 }
 

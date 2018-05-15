@@ -1,6 +1,11 @@
 .c-project-gallery {
     margin-right: 30px;
     margin-bottom: 20px;
+    @media (min-width: 300px) and (max-width: $viewport--m) { 
+        margin-right: 20px;
+        margin-left: 20px;
+        margin-bottom: 10px;
+    }
 	&__item {
 		width: 200px;
 		//height: 320px;
@@ -39,6 +44,14 @@
     	background: transparent;
     	border: 0;
     	cursor: w-resize;
+        @media (min-width: 300px) and (max-width: $viewport--m) { 
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            margin-top: -15px;
+            left: -30px;
+            background: black;
+        }
     }
     button[data-controls="next"] {
     	position: absolute;
@@ -50,5 +63,13 @@
     	background: transparent;
     	border: 0;
     	cursor: e-resize;
+        @media (min-width: 300px) and (max-width: $viewport--m) { 
+            width: 30px;
+            height: 30px;
+            top: 50%;
+            margin-top: -15px;
+            right: -30px;
+            background: black;
+        }
     }
 }

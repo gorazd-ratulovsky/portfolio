@@ -30,6 +30,15 @@ body.is-blue {
 			}
 		}
 	}
+
+	@media (min-width: 300px) and (max-width: $viewport--m) { 
+		li  {
+			a {
+				color: white;
+			}
+		}
+	}
+
 }
 
 .c-vertical-nav {
@@ -74,6 +83,43 @@ body.is-blue {
 				right: 0;
 				bottom: 0;
 				z-index: 10;
+			}
+		}
+	}
+
+	@media (min-width: 300px) and (max-width: $viewport--m) { 
+		position: fixed;
+		top: inherit;
+		bottom: 0;
+		right: 0;
+		left: 0;
+		padding: 0 20px;
+		li  {
+			float: left;
+			width: 33.33%;
+			
+			&:first-child {
+				a {
+					text-align: left;
+				}
+			}
+
+			&:last-child {
+				a {
+					text-align: right;
+				}
+			}
+			a {
+				text-indent: 0;
+				text-align: center;
+				color: $color--blue;
+				svg {
+					display: none;
+				}
+
+				&.is-active {
+					color: $color--grey;
+				}
 			}
 		}
 	}

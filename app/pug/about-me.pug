@@ -3,11 +3,12 @@ html
 		title
 		link(rel="stylesheet" href="https://webfonts.fontstand.com/WF-003967-50d7ef660a15a6a02aad988ada1b94b9.css" type="text/css")
 		link(rel="stylesheet" type="text/css" href="styles/bundle.css")
+		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body.is-subpage
 		include sections/header-verticalNav.pug
 		div#barba-wrapper
 			div.barba-container(data-namespace="sub-page")
-				a(href="index.html" title="Back to homepage").e-back-link
+				a(href="index.html#about-me" title="Back to homepage").e-back-link
 					include assets/arrow-back-02.svg
 				include sections/sub-about-me.pug
 				

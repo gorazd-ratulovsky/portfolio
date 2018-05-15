@@ -10,5 +10,16 @@
 		font-size: 5.4rem;
 		color: $color--blue;
 		line-height: 1.25;
+		@media (min-width: 300px) and (max-width: $viewport--m) { 
+	        font-size: 3.2rem;
+	    }
 	}
+
+	@media (min-width: 300px) and (max-width: $viewport--m) { 
+        .e-btn {
+        	font-size: 2.2rem;
+        	line-height: 1;
+        	margin-bottom: 5px;
+        }
+    }
 }

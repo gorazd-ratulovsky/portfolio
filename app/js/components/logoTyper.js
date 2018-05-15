@@ -61,28 +61,32 @@ export default class LogoTyper {
 			let parent = x;
 			let child = x.children;
 
-			x.addEventListener('mouseenter', function(e) {
-				let dataLogo = this.dataset.changeLogo;
+			if ("ontouchstart" in document.documentElement === false) {
+				x.addEventListener('mouseenter', function(e) {
+					let dataLogo = this.dataset.changeLogo;
 
-				self.changeLogo(dataLogo);
-				self.morphing.toSquare(child[0]);
-			});
-
-			x.addEventListener('mouseout', (e) => {
-				let dataLogo = self.mainElement.dataset.firstLogo;
-
-				if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === 0) {
 					self.changeLogo(dataLogo);
-				} else if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === Number(document.querySelector('.js-change-logo.is-active').dataset.slideId)) {
-					self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
-				} 
+					self.morphing.toSquare(child[0]);
+				});
 
-				if (x.classList.contains('is-active')) {
-					self.morphing.toTriangle(child[0]);
-				} else {
-					self.morphing.toCircle(child[0]);
-				}
-			});
+				x.addEventListener('mouseout', (e) => {
+					let dataLogo = self.mainElement.dataset.firstLogo;
+
+					if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === 0) {
+						self.changeLogo(dataLogo);
+					} else if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === Number(document.querySelector('.js-change-logo.is-active').dataset.slideId)) {
+						self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
+					} else if (document.querySelector('.js-change-logo.is-active').dataset.content === document.querySelector('.js-slide.is-active').dataset.content) {
+						self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
+					}
+
+					if (x.classList.contains('is-active')) {
+						self.morphing.toTriangle(child[0]);
+					} else {
+						self.morphing.toCircle(child[0]);
+					}
+				});
+			}
 		});
 
 		document.querySelector('.js-logotyper-changelogo').addEventListener('mouseenter', (e) => {
@@ -94,11 +98,14 @@ export default class LogoTyper {
 			let dataLogo = self.mainElement.dataset.firstLogo;
 
 			if (document.querySelector('.js-slide') !== null) {
+
 				if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === 0) {
 					self.changeLogo(dataLogo);
 				} else if (Number(document.querySelector('.js-slide.is-active').dataset.slideId) === Number(document.querySelector('.js-change-logo.is-active').dataset.slideId)) {
 					self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
-				} 
+				} else if (document.querySelector('.js-change-logo.is-active').dataset.content === document.querySelector('.js-slide.is-active').dataset.content) {
+					self.changeLogo(document.querySelector('.js-change-logo.is-active').dataset.changeLogo);
+				}
 			} else {
 				self.changeLogo(dataLogo);
 			}

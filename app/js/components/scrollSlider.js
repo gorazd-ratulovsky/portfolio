@@ -14,8 +14,11 @@ export default class ScrollSlider {
 		this.pushItems();
 
 		// ADD EVENTS //
+		this.addTouchEvent(self);
+		this.onLoadEvent(self);
 		this.addScrollEvent(self);
 		this.addClickEvent(self);
+
 	}
 
 	// METHODS //
@@ -108,6 +111,19 @@ export default class ScrollSlider {
 		
 
 		this.setNavigation(slideId, content);
+		this.setHash(slideId, content);
+	}
+
+	setHash(_slideId, _hash) {
+		var hash = `#${_hash}`;
+		var url = location.origin + hash;
+
+		if (_hash == 'projects') {
+			var slideProjects = document.querySelector(`.js-slide[data-slide-id="${_slideId}"]`).dataset.projectId;
+			window.location.replace(url + ':' + slideProjects);
+		} else {
+			window.location.replace(url);
+		}
 	}
 
 	setNavigation(id, content) {
@@ -130,6 +146,58 @@ export default class ScrollSlider {
 			this.logoTyper.changeLogo(document.querySelector('.js-logotyper').dataset.firstLogo);
 			this.morphing.toCircle(child[0]);
 		}
+	}
+
+	toggleSlides(direction) {
+		let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
+		let prev = current === 0 ? current : current - 1;
+		let prevContent = document.querySelector(`.js-slide[data-slide-id="${prev}"]`).dataset.content;
+		let next = current === this.sliderElements.length - 1 ? current : current + 1;
+		let nextContent = document.querySelector(`.js-slide[data-slide-id="${next}"]`).dataset.content;
+
+		if (direction === "up") {
+			this.setSlide(prev, prevContent);
+		} else if (direction === "down") {
+			this.setSlide(next, nextContent);
+		}
+	}
+
+	onLoadEvent(_this) {
+		var self = _this;
+
+		let hashArray = window.location.hash.split(/#|:/);
+		let hash = hashArray[1];
+		let slideArray;
+		let slideId;
+		let slideContent;
+
+		if (hash != undefined) {
+			slideArray = hash == 'projects' ? Array.prototype.slice.call(document.querySelectorAll(`${self.slideElement}[data-project-id="${hashArray[2]}"]`)) : Array.prototype.slice.call(document.querySelectorAll(`${self.slideElement}[data-content="${hash}"]`));
+			slideId = Number(slideArray[0].dataset.slideId);
+			slideContent = slideArray[0].dataset.content;
+
+			self.setSlide(slideId, slideContent);
+		}
+	}
+
+	addTouchEvent(_this) {
+		var self = _this;
+
+		let startY;
+		let endY;
+
+		document.addEventListener('touchstart', function(e){
+			startY = e.pageY;
+		});
+
+		document.addEventListener('touchend', function(e){
+			endY = e.pageY;
+			if (startY > endY) {
+				self.toggleSlides("down");
+			} else if (startY < endY) {
+				self.toggleSlides("up");
+			}
+		});
 	}
 
 	addScrollEvent(_this) {
@@ -161,17 +229,9 @@ export default class ScrollSlider {
 					
 					if (!scrollStatus.functionCall) {
 						if (delta > 0) { // up
-							let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
-							let prev = current === 0 ? current : current - 1;
-							let prevContent = document.querySelector(`.js-slide[data-slide-id="${prev}"]`).dataset.content;
-
-							self.setSlide(prev, prevContent);
+							self.toggleSlides("up");
 						} else if (delta < 0) { // down
-							let current = Number(document.querySelector('.js-slide.is-active').dataset.slideId);
-							let next = current === self.sliderElements.length - 1 ? current : current + 1;
-							let nextContent = document.querySelector(`.js-slide[data-slide-id="${next}"]`).dataset.content;
-
-							self.setSlide(next, nextContent);
+							self.toggleSlides("down");
 						}
 						scrollStatus.functionCall = true;
 					}

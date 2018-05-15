@@ -17,14 +17,20 @@ body.is-subpage {
     .l-header {
         
     }
-    .l-header__lang {
-        display: none;
-    }
+
 }
 
 body.is-case-study {
     .l-header {
-        margin-left: 30px;
+        //margin-left: 30px;
+
+        @media (min-width: 300px) and (max-width: $viewport--m) { 
+            margin-left: 0;
+        }
+
+        @media (min-width: $viewport--l) and (max-width: $viewport--xl) { 
+            padding: 0 90px;
+        }
     }
 }
 
@@ -79,10 +85,14 @@ body.is-blue {
     top: 0;
     left: 0;
     right: 0;
-    padding: 0 60px;
-    margin: $header--offset;
+    padding: 0 20px;
+    margin: 20px auto;
     max-width: 1660px;
     width: 100%; 
+    @media screen and (min-width: $viewport--l) {
+        padding: 0 60px;
+        margin: $header--offset;
+    }
     @media screen and (min-width: $viewport--xl) {
         padding-top: 20px;
     }
@@ -97,10 +107,19 @@ body.is-blue {
     &__projects {
         position: absolute;
         top: calc(100% + 10px);
-        left: 0;
+        left: 20px;
         display: none;
         font-size: 2.6rem;
         color: $header__project--color;
+
+        @media screen and (max-width: $viewport--m) {
+            top: 100%;
+            font-size: 1.6rem;
+        }
+
+        @media screen and (min-width: $viewport--l) {
+            left: 60px;
+        }
 
         @media (min-width: $viewport--xl) and (max-width: $viewport--xxl) {
             left: 100px;
@@ -117,20 +136,33 @@ body.is-blue {
 
     &__logo {
     	float: left;
-    	font-size: 4.7rem;
+    	font-size: 2.2rem;
     	line-height: 1;
     	color: $header__logo--color;
         position: relative;
         transition: color 0.3s ease;
-        @media screen and (min-width: $viewport--xxl) {
-            font-size: 3.4rem;
+        @media (min-width: 300px) and (max-width: $viewport--m) { 
+            font-size: 3rem;
         }
+        @media screen and (min-width: $viewport--m) {
+            font-size: 4.7rem;
+        }
+
     }
 
     &__logo-symbol {
         position: relative;
         top: -13px;
         margin-left: 8px;
+
+        @media screen and (max-width: $viewport--m) {
+            top: -6px;
+            margin-left: 4px;
+
+            svg {
+                width: 14px;
+            }
+        }
     }
 
     &__logo-text {
@@ -149,9 +181,13 @@ body.is-blue {
     		line-height: 1;
     		color: $header__lang--color;
             transition: color 0.3s ease;
+            @media screen and (max-width: $viewport--m) {
+                font-size: 1.6rem;
+            }
             @media screen and (min-width: $viewport--xxl) {
                 font-size: 2.1rem;
             }
+            
 
     		&:after {
     			content: '/';
@@ -193,7 +229,7 @@ body.is-blue {
 	left: 0;
 	right: 0;
 	width: 100%;
-    height: 100vh;
+    height: 100%;
     //background-color: $color--light;
     //transform: translateY(0%);
     visibility: hidden;
@@ -226,6 +262,11 @@ body.is-blue {
         .big-title {
             font-size: 8.8rem;
             line-height: 9.8rem;
+            @media (min-width: 300px) and (max-width: $viewport--m) { 
+                font-size: 6rem;
+                line-height: 7rem;
+                margin-bottom: 30px;
+            }
             @media screen and (min-width: $viewport--xxl) {
                 line-height: 11.8rem;
                 padding-bottom: 30px;
@@ -260,6 +301,14 @@ body.is-blue {
 
         .perex {
             margin-bottom: 60px;
+            @media (min-width: 300px) and (max-width: $viewport--m) { 
+                margin-bottom: 15px;
+            }
+        }
+        @media (min-width: 300px) and (max-width: $viewport--m) { 
+            .e-btn {
+                margin-bottom: 5px;
+            }
         }
         @media screen and (min-width: $viewport--xxl) {
             padding-bottom: 110px;

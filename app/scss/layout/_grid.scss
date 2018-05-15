@@ -3,12 +3,15 @@ $wrap--offset: 0 ($offset--base * 2);
 	margin: 0 auto;
 	max-width: 1660px;
 	width: 100%;
-	padding: $wrap--offset;
+	padding: 0 20px;
 
 	&--full {
 		height: 100%;
 	}
 
+	@media screen and (min-width: $viewport--l) {
+		padding: $wrap--offset;
+	}
 	@media screen and (min-width: $viewport--xxxl) {
 		max-width: 2100px;
 	}
@@ -20,15 +23,20 @@ $wrap--offset: 0 ($offset--base * 2);
 
 .row {
 	display: flex;
+	flex: 0 1 auto;
+	flex-direction: row;
+	flex-wrap: wrap;
 	margin: 0 -15px;
 
 	&--full {
 		height: 100%;
+		align-content:flex-end;
 	}
 }
 
 [class^="g-"] {
 	padding: 0 15px;
+	flex: 0 0 auto;
 
 	&.flex-end {
 		align-self: flex-end;
@@ -36,39 +44,189 @@ $wrap--offset: 0 ($offset--base * 2);
 }
 
 .g {
-	&-xl-2 {
-		width: 16.665%;
+	&-s-2 {
+		flex-basis: 16.665%;
+		max-width: 16.665%;
 	}
 
-	&-xl-3 {
-		width: 25%;
+	&-s-3 {
+		flex-basis: 25%;
+		max-width: 25%;
 	}
 
-	&-xl-4 {
-		width: 33.33%;
+	&-s-4 {
+		flex-basis: 33.33%;
+		max-width: 33.33%;
 	}
 
-	&-xl-5 {
-		width: 41.66%;
+	&-s-5 {
+		flex-basis: 41.66%;
+		max-width: 41.66%;
 	}
 
-	&-xl-6 {
-		width: 50%;
+	&-s-6 {
+		flex-basis: 50%;
+		max-width: 50%;
 	}
 
-	&-xl-8 {
-		width: 66.66%;
+	&-s-8 {
+		flex-basis: 66.66%;
+		max-width: 66.66%;
 	}
 
-	&-xl-9 {
-		width: 75%;
+	&-s-9 {
+		flex-basis: 75%;
+		max-width: 75%;
 	}
 
-	&-xl-10 {
-		width: 83.325%;
+	&-s-10 {
+		flex-basis: 83.325%;
+		max-width: 83.325%;
 	}
 
-	&-xl-12 {
-		width: 100%;
+	&-s-12 {
+		flex-basis: 100%;
+		max-width: 100%;
+	}
+
+	@media only screen and (min-width: $viewport--m) {
+		&-m-2 {
+			flex-basis: 16.665%;
+			max-width: 16.665%;
+		}
+
+		&-m-3 {
+			flex-basis: 25%;
+			max-width: 25%;
+		}
+
+		&-m-4 {
+			flex-basis: 33.33%;
+			max-width: 33.33%;
+		}
+
+		&-m-5 {
+			flex-basis: 41.66%;
+			max-width: 41.66%;
+		}
+
+		&-m-6 {
+			flex-basis: 50%;
+			max-width: 50%;
+		}
+
+		&-m-8 {
+			flex-basis: 66.66%;
+			max-width: 66.66%;
+		}
+
+		&-m-9 {
+			flex-basis: 75%;
+			max-width: 75%;
+		}
+
+		&-m-10 {
+			flex-basis: 83.325%;
+			max-width: 83.325%;
+		}
+
+		&-m-12 {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
+	}
+
+	@media only screen and (min-width: $viewport--l) {
+		&-l-2 {
+			flex-basis: 16.665%;
+			max-width: 16.665%;
+		}
+
+		&-l-3 {
+			flex-basis: 25%;
+			max-width: 25%;
+		}
+
+		&-l-4 {
+			flex-basis: 33.33%;
+			max-width: 33.33%;
+		}
+
+		&-l-5 {
+			flex-basis: 41.66%;
+			max-width: 41.66%;
+		}
+
+		&-l-6 {
+			flex-basis: 50%;
+			max-width: 50%;
+		}
+
+		&-l-8 {
+			flex-basis: 66.66%;
+			max-width: 66.66%;
+		}
+
+		&-l-9 {
+			flex-basis: 75%;
+			max-width: 75%;
+		}
+
+		&-l-10 {
+			flex-basis: 83.325%;
+			max-width: 83.325%;
+		}
+
+		&-l-12 {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
+	}
+
+	@media only screen and (min-width: $viewport--xl) {
+		&-xl-2 {
+			flex-basis: 16.665%;
+			max-width: 16.665%;
+		}
+
+		&-xl-3 {
+			flex-basis: 25%;
+			max-width: 25%;
+		}
+
+		&-xl-4 {
+			flex-basis: 33.33%;
+			max-width: 33.33%;
+		}
+
+		&-xl-5 {
+			flex-basis: 41.66%;
+			max-width: 41.66%;
+		}
+
+		&-xl-6 {
+			flex-basis: 50%;
+			max-width: 50%;
+		}
+
+		&-xl-8 {
+			flex-basis: 66.66%;
+			max-width: 66.66%;
+		}
+
+		&-xl-9 {
+			flex-basis: 75%;
+			max-width: 75%;
+		}
+
+		&-xl-10 {
+			flex-basis: 83.325%;
+			max-width: 83.325%;
+		}
+
+		&-xl-12 {
+			flex-basis: 100%;
+			max-width: 100%;
+		}
 	}
 }

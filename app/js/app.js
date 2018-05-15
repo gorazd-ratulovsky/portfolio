@@ -20,7 +20,3 @@ window.Gallery = new Gallery();
 
 
 
-
-
-
-

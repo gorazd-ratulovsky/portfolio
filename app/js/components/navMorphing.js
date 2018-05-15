@@ -29,17 +29,17 @@ export default class NavMorphing {
 	toSquare(el) {
 		this.init(el);
 
-		this.circle.animate({ d: this.squarePoints }, 500, mina.backout);  
+		this.circle.animate({ d: this.squarePoints }, 1000, mina.backout);  
 	}
 
 	toCircle(el) {
 		this.init(el);
-		this.circle.animate({ d: this.circlePoints }, 500, mina.backout); 
+		this.circle.animate({ d: this.circlePoints }, 1000, mina.backout); 
 	}
 
 	toTriangle(el) {
 		this.init(el);
-		this.circle.animate({ d: this.trianglePoints }, 500, mina.backout); 
+		this.circle.animate({ d: this.trianglePoints }, 1000, mina.backout); 
 	}
 }
 

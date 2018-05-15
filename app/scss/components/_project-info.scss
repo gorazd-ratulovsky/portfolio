@@ -1,9 +1,24 @@
 .c-project-info {
 	margin-bottom: 30px;
+	@media (min-width: 300px) and (max-width: $viewport--m) { 
+        margin-bottom: 10px;
+
+        .row {
+			width: 100%;
+			display: none;
+
+			&:first-of-type {
+				display: block;
+			}
+        }
+    }
 	p {
 		margin-bottom: 0;
 	}
 	&__title {
 		margin-top: 15px;
+		@media (min-width: 300px) and (max-width: $viewport--m) { 
+	        margin-top: 5px;
+	    }
 	}
 }
