@@ -116,7 +116,7 @@ export default class ScrollSlider {
 
 	setHash(_slideId, _hash) {
 		var hash = `#${_hash}`;
-		var url = location.origin + hash;
+		var url = location.origin + location.pathname + hash;
 
 		if (_hash == 'projects') {
 			var slideProjects = document.querySelector(`.js-slide[data-slide-id="${_slideId}"]`).dataset.projectId;
