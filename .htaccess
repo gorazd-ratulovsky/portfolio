@@ -1,0 +1,17 @@
+RewriteEngine on
+
+
+# Specify search friendly URLs
+RewriteRule ^o-mne$ /about-me.html [L]
+RewriteRule ^o-mne/$ /about-me.html [L]
+
+RewriteRule ^en/$ /index-en.html [L]
+RewriteRule ^en$ /index-en.html [L]
+RewriteRule ^en/about-me$ /about-me-en.html [L]
+RewriteRule ^en/about-me/$ /about-me-en.html [L]
+
+RewriteRule ^redesign-webu-metodicke-centrum$ /methodical-center-website.html [L]
+RewriteRule ^redesign-webu-metodicke-centrum/$ /methodical-center-website.html [L]
+RewriteRule ^en/redesign-methodological-centre-website$ /methodical-center-website-en.html [L]
+RewriteRule ^en/redesign-methodological-centre-website/$ /methodical-center-website-en.html [L]
+

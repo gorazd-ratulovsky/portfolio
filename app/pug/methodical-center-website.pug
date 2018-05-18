@@ -1,8 +1,13 @@
 html
 	head
-		title
+		title Gorazd Ratulovsky – digital designer & front-end developer
 		link(rel="stylesheet" href="https://webfonts.fontstand.com/WF-003967-50d7ef660a15a6a02aad988ada1b94b9.css" type="text/css")
-		link(rel="stylesheet" type="text/css" href="styles/bundle.css")
+		link(rel="stylesheet" type="text/css" href="http://gorazd.sk/styles/bundle.css")
+		meta(charset="UTF-8")
+		meta(name="description" content="Case study: Redesign webovej stránky Metodické centra pre múzeá v prírode.")
+		meta(name="keywords" content="digital design, ui, ux, ui designer, front-end developer, digital designer, webdesign, webdizajn, interaction, framer, invision, metodicke centrum pro muzea v prirode")
+		meta(name="robots" content="all")
+		meta(name="author" content="Gorazd Ratulovsky")
 		meta(name="viewport" content="width=device-width, initial-scale=1")
 	body.is-subpage
 		header.l-header
@@ -13,9 +18,9 @@ html
 					include assets/logo-01.svg
 			ul.l-header__lang
 				li 
-					a(href="#").l-header__lang-item.is-active sk
+					a(href="http://gorazd.design/redesign-webu-metodicke-centrum").l-header__lang-item.is-active sk
 				li 
-					a(href="#").l-header__lang-item en
+					a(href="http://gorazd.design/en/redesign-methodological-centre-website").l-header__lang-item en
 
 		nav.c-vertical-nav
 			ul 
@@ -34,14 +39,14 @@ html
 
 		div#barba-wrapper
 			div.barba-container(data-namespace="sub-page")
-				a(href="index.html" title="Back to homepage").e-back-link
+				a(href="http://gorazd.design/#projects:01" title="Back to homepage").e-back-link
 					include assets/arrow-back-02.svg
 				include sections/sub-methodical-center.pug
 				
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.6.0/min/tiny-slider.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js")
-		script(src="scripts/app.js")
+		script(src="http://gorazd.sk/scripts/app.js")
 
 
 

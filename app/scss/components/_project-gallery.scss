@@ -18,6 +18,14 @@
             width: 100%;
         }
 	}
+
+    &--left {
+        margin-left: 30px;
+        margin-right: 0;
+    }
+    .small-title {
+        font-size: 1rem;
+    }
 }
 
 
@@ -44,13 +52,18 @@
     	background: transparent;
     	border: 0;
     	cursor: w-resize;
+        cursor: url(../images/arrow-left.png), auto;
         @media (min-width: 300px) and (max-width: $viewport--m) { 
             width: 30px;
             height: 30px;
             top: 50%;
             margin-top: -15px;
             left: -30px;
-            background: black;
+            background-image: url(../images/arrow-left.png);
+            background-position: center;
+            background-size: 60%;
+            background-repeat: no-repeat;
+            opacity: 0.25;
         }
     }
     button[data-controls="next"] {
@@ -63,13 +76,19 @@
     	background: transparent;
     	border: 0;
     	cursor: e-resize;
+        cursor: url(../images/arrow-right.png), auto;
+
         @media (min-width: 300px) and (max-width: $viewport--m) { 
             width: 30px;
             height: 30px;
             top: 50%;
             margin-top: -15px;
             right: -30px;
-            background: black;
+            background-image: url(../images/arrow-right.png);
+            background-position: center;
+            background-size: 60%;
+            background-repeat: no-repeat;
+            opacity: 0.25;
         }
     }
 }

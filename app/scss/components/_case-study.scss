@@ -3,6 +3,29 @@
 	@media (min-width: 300px) and (max-width: $viewport--m) { 
 		padding-top: 280px;
 	}
+
+	&__img {
+		img {
+			width: 100%;
+		}
+
+		&--met01 {
+			position: absolute;
+			bottom: 0;
+			left: -10%;
+			width: 60%;
+			z-index: -1;
+			@media (min-width: 300px) and (max-width: $viewport--m) { 
+				position: static;
+				width: 100%;
+			}
+
+			@media (min-width: $viewport--m) and (max-width: $viewport--l) { 
+				position: static;
+				width: 100%; 
+			}
+		}
+	}
 	&__header {
 		width: 75%;
 		padding-left: 0px;
@@ -55,6 +78,7 @@
 	}
 	&__section {
 		.wrap {
+			position: relative;
 			padding: 140px 90px 100px;
 
 			@media (min-width: 300px) and (max-width: $viewport--m) { 
@@ -77,5 +101,19 @@
 	&__images {
 		background: white;
 		padding: 90px 0;
+
+		.img {
+			max-width: 1400px;
+		    width: 100%;
+		    margin: auto;
+		    display: block;
+		    img {
+		    	width: 100%;
+		    }
+
+		    .small-title {
+		    	font-size: 1rem;
+		    }
+		}
 	}
 }
