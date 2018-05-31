@@ -187,11 +187,11 @@ export default class ScrollSlider {
 		let endY;
 
 		document.addEventListener('touchstart', function(e){
-			startY = e.pageY;
+			startY = e.changedTouches[0].pageY;
 		});
 
 		document.addEventListener('touchend', function(e){
-			endY = e.pageY;
+			endY = e.changedTouches[0].pageY;
 			if (startY > endY) {
 				self.toggleSlides("down");
 			} else if (startY < endY) {

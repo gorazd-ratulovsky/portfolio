@@ -327,6 +327,9 @@ body.is-blue {
         @media screen and (min-width: $viewport--xxl) {
             padding-bottom: 120px;
         }
+        @media (min-width: 300px) and (max-width: $viewport--m) { 
+            padding-bottom: 50px;
+        }
         //background-color: $color--blue;
     }
 

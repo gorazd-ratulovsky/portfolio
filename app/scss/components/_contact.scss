@@ -5,6 +5,11 @@
 	p {
 		@media (min-width: 300px) and (max-width: $viewport--m) { 
 			margin-bottom: 15px;
+
+			&.perex {
+				font-size: 1.6rem;
+				line-height: 2.9rem;
+			}
         }
 	}
 
@@ -34,7 +39,7 @@
 
 		@media (min-width: 300px) and (max-width: $viewport--m) { 
 			padding-bottom: 15px;
-			margin-bottom: 20px;
+			margin-bottom: 15px;
         }
 
 		&:after {

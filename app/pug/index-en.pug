@@ -22,6 +22,13 @@ html
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/snap.svg/0.5.1/snap.svg-min.js")
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/barba.js/1.0.0/barba.min.js")
 		script(src="http://gorazd.sk/scripts/app.js")
+		script(async src="https://www.googletagmanager.com/gtag/js?id=UA-16716214-17")
+		script.
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'UA-16716214-17');
 
 
 //- pri scrolle sa bude menit trieda na body ktora bude menit pozadie
